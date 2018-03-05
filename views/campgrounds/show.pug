@@ -12,6 +12,7 @@ body
               span= campground.name
             p#show--camp-subtitle.subtitle.is-6 $9.00 / NIGHT
             p#show--camp-desc= campground.description
+            p#show--camp-desc= "Submitted by " + campground.author.username
           .column.is-3
             //- a.panel-block.is-active
             //-   span.panel-icon

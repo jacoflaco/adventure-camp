@@ -16,13 +16,18 @@ router.get('/', (req, res) => {
 })
 
 // new
-router.get('/new', (req, res) => {
+router.get('/new', isLoggedIn, (req, res) => {
   res.render('campgrounds/new')
 })
 
 // create
-router.post('/', (req, res) => {
+router.post('/', isLoggedIn, (req, res) => {
+  let author = {
+    id: req.user._id,
+    username: req.user.username
+  }
   let newcamp = req.body.camp
+  newcamp.author = author
   Campground.create(newcamp, (err, campground) => {
     if (err) {
       console.log(err)
@@ -45,5 +50,13 @@ router.get('/:id', (req, res) => {
     }
   })
 })
+
+// check if logged in
+function isLoggedIn(req, res, next) {
+  if (req.isAuthenticated()) {
+    return next()
+  }
+  res.redirect('/login')
+}
 
 module.exports = router
