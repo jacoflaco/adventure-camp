@@ -1,0 +1,27 @@
+.hero-head
+  nav.navbar
+    .navbar-brand
+      a.navbar-item(href='/')
+        h1.title.is-4
+          span.icon(style='vertical-align: middle') 
+            i.fas.fa-compass
+          |   adventure camp
+      span.navbar-burger(data-target='navbarMenuHero')
+        span
+        span
+        span
+    #navbarMenuHero.navbar-menu
+      .navbar-end
+        a.navbar-item(href='/campgrounds') Campgrounds
+        .navbar-item.has-dropdown.is-hoverable
+          a.navbar-link.is-large
+            span.icon.is-large
+              i.fas.fa-user-circle.fa-2x(style='color: #000')
+          .navbar-dropdown
+            if !currentUser
+              a.navbar-item(href='/login') Login
+              a.navbar-item(href='/register') Register
+            else
+              p.navbar-item= "Hello, " + currentUser.username
+              hr.navbar-divider
+              a.navbar-item(href='/logout') Logout

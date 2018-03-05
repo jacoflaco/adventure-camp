@@ -1,0 +1,41 @@
+// _campgrounds.sass
+
+// header
+.camp--title
+  padding-bottom: 10px
+
+// camps
+.card-image img
+  object-fit: cover
+
+.camp--camp-title
+  position: relative
+  top: 250px
+  left: 0
+  color: white
+  width: 100%
+  > span
+    background: black
+    padding: 5px 10px
+    font-weight: bold
+    text-transform: uppercase
+    color: white
+    font-size: 16px
+
+figure > a > .content
+  position: absolute
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+  transition: background-color 0.3s ease-in-out
+  &:hover
+    background-color: rgba(0, 0, 0, .5)
+    cursor: pointer;
+    > h4 > span
+      font-size: 22px
+
+.camp--camp-title
+  transition: all 0.3s ease-in-out
+  > span
+    transition: all 0.3s ease-in-out

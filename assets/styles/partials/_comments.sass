@@ -1,0 +1,29 @@
+.comment-card
+  border-radius: 3px
+  
+.column 
+  &:nth-of-type(5n+1)
+    > .comment-card
+      border-top: 5px solid #66FFB3
+  &:nth-of-type(5n+2)
+    > .comment-card
+      border-top: 5px solid #FFBB33
+  &:nth-of-type(5n+3)
+    > .comment-card
+      border-top: 5px solid #66E5FF
+  &:nth-of-type(5n+4)
+    > .comment-card
+      border-top: 5px solid #FF6699
+  &:nth-of-type(5n+5)
+    > .comment-card
+      border-top: 5px solid #CC66FF
+
+.comment-card--author
+  color: black
+
+.comment-card--date
+  font-size: 13px
+
+.has-text-contained
+  overflow: hidden
+  word-wrap: break-word

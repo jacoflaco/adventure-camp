@@ -1,0 +1,29 @@
+include ../partials/head
+
+body
+  header.hero.is-white.is-fullheight
+    include ../partials/nav
+    
+    #hero--full-img.hero-body.has-bg-img
+      .container
+        .columns.is-centered
+          #form-box.column.is-4.box
+            form(action='/register' method='post')
+              .columns.is-centered
+                .column
+                  h1#form-title.title.is-4
+                    span Sign up
+              .columns.is-centered
+                .field.column
+                  .control
+                    input.input.is-medium(type='text' name='username' placeholder='username')
+              .columns.is-centered
+                .field.column
+                  .control
+                    input.input.is-medium(type='text' name='password' placeholder='password')
+              .columns.is-centered
+                .field.column.is-grouped.is-grouped-centered
+                  p.control
+                    a.button.is-black.is-medium(href='/campgrounds') Return
+                  p.control
+                    button.button.is-white.is-medium Register

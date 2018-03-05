@@ -1,0 +1,46 @@
+include ../partials/head
+
+body
+  header.hero.is-large.is-white
+    include ../partials/nav
+
+    #hero--full-img-tp.hero-body.has-bg-img(data-img-src=campground.image)
+      .container
+        .columns
+          .column.is-9
+            p#show--camp-title.title.is-spaced
+              span= campground.name
+            p#show--camp-subtitle.subtitle.is-6 $9.00 / NIGHT
+            p#show--camp-desc= campground.description
+          .column.is-3
+            //- a.panel-block.is-active
+            //-   span.panel-icon
+            //-     i.fas.fa-book
+            //-   | Category 1
+            //- a.panel-block
+            //-   span.panel-icon
+            //-     i.fas.fa-book
+            //-   | Category 2
+            //- a.panel-block
+            //-   span.panel-icon
+            //-     i.fas.fa-book
+            //-   | Category 2
+        .buttons
+          a.button.is-outlined.is-black(href='/campgrounds') Return
+          a.button.is-black(href='/campgrounds/' + campground._id + '/comments/new') Review Campground
+
+  .section
+    .container
+      p#reviews--title.title
+        span
+        | Reviews
+      .columns.is-multiline
+        each comment in campground.comments
+          .column.is-mobile.is-half-tablet.is-one-third-desktop
+            .comment-card.card
+              .card-content
+                p.comment-card--author.title.is-4= comment.author.username       
+                p.comment-card--date.subtitle 10 days ago          
+                .content.has-text-contained
+                  = comment.text
+                  

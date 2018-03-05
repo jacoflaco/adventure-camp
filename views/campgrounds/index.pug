@@ -1,0 +1,26 @@
+include ../partials/head
+
+body
+  header.hero.is-medium.is-white
+    include ../partials/nav
+
+    #hero--half-img-tp.hero-body.has-bg-img
+      .container
+        h1.camp--title.title.is-1 Welcome to Adventure Camp!
+        p.subtitle.is-6 View our hand-picked campgrounds from all over the world
+        p
+          a.button.is-medium.is-black(href='/campgrounds/new') Add Campground
+
+  .section
+    .container
+      .columns.is-gapless.is-multiline
+        each camp in campgrounds
+          .column.is-mobile.is-half-tablet.is-one-third-desktop
+            .card
+              .card-image
+                figure.image.is-4by3
+                  img(src=camp.image)
+                  a(href='/campgrounds/' + camp._id)
+                    .content
+                      h4.camp--camp-title
+                        span= camp.name
