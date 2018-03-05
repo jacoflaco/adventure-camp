@@ -4,7 +4,8 @@ let express = require('express'),
     expressSession = require('express-session'),
     passport = require('passport'),
     passportLocal = require('passport-local'),
-    passportLocalMongoose = require('passport-local-mongoose')
+    passportLocalMongoose = require('passport-local-mongoose'),
+    methodOverride = require('method-override')
 
 // models
 let Comment = require('./models/comment'),
@@ -24,6 +25,7 @@ mongoose.connect('mongodb://localhost/adventure')
 
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(express.static(__dirname + '/assets'))
+app.use(methodOverride('_method'))
 
 // pug setup
 app.set('view engine', 'pug')

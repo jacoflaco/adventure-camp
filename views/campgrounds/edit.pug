@@ -1,0 +1,34 @@
+include ../partials/head
+
+body
+  header.hero.is-white.is-fullheight
+    include ../partials/nav
+    
+    #hero--full-img.hero-body.has-bg-img
+      .container
+        .columns.is-centered
+          #form-box.column.is-5.box
+            form(action='/campgrounds/' + campground._id + '?_method=PUT' method='post')
+              .columns.is-centered
+                .column
+                  h1#form-title.title.is-4
+                    span= "Edit " + campground.name
+              .columns.is-centered
+                .field.column
+                  .control
+                    input.input.is-medium(type='text' name='camp[name]' value=campground.name)
+              .columns.is-centered
+                .field.column
+                  .control
+                    input.input.is-medium(type='text' name='camp[image]' value=campground.image)
+              .columns.is-centered
+                .field.column
+                  .control
+                    textarea.textarea.is-medium(name='camp[description]')= campground.description
+              .columns.is-centered
+                .field.column.is-grouped.is-grouped-centered
+                  p.control
+                    a.button.is-white.is-medium(href='/campgrounds/' + campground.id) Return
+                  p.control
+                    button.button.is-black.is-medium Update
+

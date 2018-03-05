@@ -85,12 +85,43 @@ figure > a > .content {
   color: white;
   font-size: 32px; }
 
+#edit-icon > span {
+  margin-left: 25px; }
+  #edit-icon > span > i {
+    color: black; }
+
+#edit-icon:hover {
+  color: #ffdd57; }
+
+#delete-form {
+  display: inline-block; }
+
+#delete-icon {
+  border: none;
+  background: none; }
+  #delete-icon > span {
+    margin-left: 15px; }
+    #delete-icon > span > i {
+      color: black; }
+  #delete-icon:hover {
+    color: #ffdd57;
+    cursor: pointer; }
+
 #show--camp-subtitle {
   color: black;
   font-weight: bold; }
 
 #show--camp-desc {
-  max-width: 60%; }
+  max-width: 60%;
+  letter-spacing: 1px;
+  font-size: 20px;
+  margin-bottom: 30px; }
+
+#show--camp-author {
+  color: black;
+  font-weight: bold;
+  font-style: italic;
+  margin-top: 15px; }
 
 #reviews--title {
   color: black;

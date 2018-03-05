@@ -9,10 +9,18 @@ body
         .columns
           .column.is-9
             p#show--camp-title.title.is-spaced
-              span= campground.name
+              span
+                = campground.name
             p#show--camp-subtitle.subtitle.is-6 $9.00 / NIGHT
             p#show--camp-desc= campground.description
-            p#show--camp-desc= "Submitted by " + campground.author.username
+            p#show--camp-author(style='display: inline')= campground.author.username
+            a#edit-icon(style='display: inline' href=campground.id + '/edit' title='edit campground')
+              span.icon
+                i.fas.fa-pencil-alt
+            form#delete-form(style='display: inline' action='/campgrounds/' + campground.id + '?_method=DELETE' method='post')
+              button#delete-icon(onclick='form.submit();' title='delete campground')
+                span.icon
+                  i.fas.fa-trash-alt
           .column.is-3
             //- a.panel-block.is-active
             //-   span.panel-icon
