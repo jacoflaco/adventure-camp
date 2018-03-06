@@ -51,18 +51,20 @@ body
           //-     span.icon.is-large
           //-       i.fas.fa-trash
 
-  .section
-    .container
-      p#reviews--title.title
-        span
-        | Reviews
-      .columns.is-multiline
-        each comment in campground.comments
-          .column.is-mobile.is-half-tablet.is-one-third-desktop
-            .comment-card.card
-              .card-content
-                p.comment-card--author.title.is-4= comment.author.username       
-                p.comment-card--date.subtitle 10 days ago          
-                .content.has-text-contained
-                  = comment.text
+  if campground.comments.length > 0
+    .section
+      .container
+        p#reviews--title.title
+          span
+          | Reviews
+        .columns.is-multiline
+          each comment in campground.comments
+            .column.is-mobile.is-half-tablet.is-one-third-desktop
+              .comment-card.card
+                .card-content
+                  p.comment-card--author.title.is-4= comment.author.username       
+                  p.comment-card--date.subtitle 10 days ago          
+                  .content.has-text-contained
+                    = comment.text
+                  a.button.is-small.is-black(href='/campgrounds/' + campground._id + '/comments/' + comment._id + '/edit') Edit
                   
