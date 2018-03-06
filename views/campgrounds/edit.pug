@@ -11,8 +11,8 @@ body
             form(action='/campgrounds/' + campground._id + '?_method=PUT' method='post')
               .columns.is-centered
                 .column
-                  h1#form-title.title.is-4
-                    span= "Edit " + campground.name
+                  h1#form-title.title.is-4(style='display: inline-block')
+                    span= "Edit " + campground.name                      
               .columns.is-centered
                 .field.column
                   .control

@@ -7,28 +7,6 @@
   text-transform: uppercase
   color: white
   font-size: 32px
-
-#edit-icon
-  > span 
-    margin-left: 25px
-    > i
-      color: black
-  &:hover
-    color: #ffdd57
-
-#delete-form
-  display: inline-block
-
-#delete-icon
-  border: none
-  background: none
-  > span
-    margin-left: 15px
-    > i
-      color: black
-  &:hover
-    color: #ffdd57
-    cursor: pointer
   
 #show--camp-subtitle
   color: black
@@ -42,10 +20,44 @@
 
 #show--camp-author
   color: black
+  display: inline-block
   font-weight: bold
   font-style: italic
-  margin-top: 15px
+  margin-right: 45px
 
+.dropdown-content
+  background-color: black
+
+.dropdown-divider
+  background-color: #333
+
+.dropdown-item
+  background-color: none
+  color: white
+  transition: all 0.2s ease-in-out
+  &:hover
+    background-color: none
+    color: #dddddd
+
+#edit-link:hover
+  color: #ffc035
+
+#delete-link:hover
+  color: #ff3860
+
+// #delete-form
+//   display: inline-block
+//   margin-left: 25px
+
+// #delete-link
+//   border: none
+//   background: black
+//   color: white
+//   font-size: 20px
+//   &:hover
+//     color: #ff3860
+//     cursor: pointer
+    
 // reviews
 #reviews--title
   color: black

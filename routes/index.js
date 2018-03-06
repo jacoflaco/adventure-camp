@@ -41,7 +41,7 @@ router.post(
 // logout
 router.get('/logout', (req, res) => {
   req.logout()
-  res.redirect('/campgrounds')
+  res.redirect('back')
 })
 
 // check if logged in

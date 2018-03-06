@@ -12,15 +12,8 @@ body
               span
                 = campground.name
             p#show--camp-subtitle.subtitle.is-6 $9.00 / NIGHT
-            p#show--camp-desc= campground.description
-            p#show--camp-author(style='display: inline')= campground.author.username
-            a#edit-icon(style='display: inline' href=campground.id + '/edit' title='edit campground')
-              span.icon
-                i.fas.fa-pencil-alt
-            form#delete-form(style='display: inline' action='/campgrounds/' + campground.id + '?_method=DELETE' method='post')
-              button#delete-icon(onclick='form.submit();' title='delete campground')
-                span.icon
-                  i.fas.fa-trash-alt
+            p#show--camp-desc= campground.description 
+            p#show--camp-author= campground.author.username
           .column.is-3
             //- a.panel-block.is-active
             //-   span.panel-icon
@@ -35,8 +28,28 @@ body
             //-     i.fas.fa-book
             //-   | Category 2
         .buttons
-          a.button.is-outlined.is-black(href='/campgrounds') Return
-          a.button.is-black(href='/campgrounds/' + campground._id + '/comments/new') Review Campground
+          a.button.is-outlined.is-black(href='/campgrounds') Return        
+          if currentUser && campground.author.id.equals(currentUser._id)
+            .dropdown.is-hoverable
+              .dropdown-trigger
+                button.button.is-black(aria-haspopup="true" aria-controls="dropdown-menu")
+                  span Action
+                  span.icon.is-small
+                    i.fas.fa-angle-down(aria-hidden="true")
+              .dropdown-menu#dropdown-menu.is-black(role="menu")
+                .dropdown-content
+                  a.dropdown-item(href='/campgrounds/' + campground.id + '/comments/new') Review Campground              
+                  hr.dropdown-divider
+                  a.dropdown-item#edit-link(href='/campgrounds/' + campground.id + '/edit') Edit
+                  a.dropdown-item#delete-link Delete
+          else
+            a.button.is-black(href='/campgrounds/' + campground._id + '/comments/new') Review Campground
+
+          //- are you sure you want to delete form popup
+          //- form#delete-form(action='/campgrounds/' + campground.id + '?_method=DELETE' method='post')
+          //-   button#delete-link(title='delete campground') 
+          //-     span.icon.is-large
+          //-       i.fas.fa-trash
 
   .section
     .container
