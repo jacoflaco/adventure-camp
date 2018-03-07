@@ -42,9 +42,10 @@ body
                   hr.dropdown-divider
                   a.dropdown-item#edit-link(href='/campgrounds/' + campground.id + '/edit') Edit
                   a.dropdown-item#delete-link Delete
-          else
+          else if currentUser
             a.button.is-black(href='/campgrounds/' + campground._id + '/comments/new') Review Campground
-
+          else 
+            a.button.is-black(href='/campgrounds/' + campground._id + '/comments/new') Log In to Review
           //- are you sure you want to delete form popup
           //- form#delete-form(action='/campgrounds/' + campground.id + '?_method=DELETE' method='post')
           //-   button#delete-link(title='delete campground') 
@@ -66,7 +67,8 @@ body
                   p.comment-card--date.subtitle 10 days ago          
                   .content.has-text-contained
                     = comment.text
-                  a.button.is-small.edit-button(href='/campgrounds/'+campground._id+'/comments/'+comment._id+'/edit') Edit
-                  form#delete-comment(action='/campgrounds/'+campground._id+'/comments/'+comment._id+'?_method=DELETE' method='post')
-                    button.button.is-small.is-danger Delete
+                  if currentUser && comment.author.id.equals(currentUser.id)
+                    a.button.is-small.edit-button(href='/campgrounds/'+campground._id+'/comments/'+comment._id+'/edit') Edit
+                    form#delete-comment(action='/campgrounds/'+campground._id+'/comments/'+comment._id+'?_method=DELETE' method='post')
+                      button.button.is-small.is-danger Delete
                   
