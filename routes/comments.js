@@ -68,8 +68,22 @@ router.get('/:comment_id/edit', (req, res) => {
   })
 })
 
+// update
 router.put('/:comment_id', (req, res) => {
   Comment.findByIdAndUpdate(req.params.comment_id, req.body.comment, (err, comment) => {
+    if (err) {
+      res.redirect('back')
+    }
+    else {
+      res.redirect('/campgrounds/' + req.params.id)
+    }
+  })
+})
+
+// destroy
+router.delete('/:comment_id', (req, res) => {
+  // findByIdAndRemove
+  Comment.findByIdAndRemove(req.params.comment_id, (err, comment) => {
     if (err) {
       res.redirect('back')
     }

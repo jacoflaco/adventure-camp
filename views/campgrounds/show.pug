@@ -66,5 +66,7 @@ body
                   p.comment-card--date.subtitle 10 days ago          
                   .content.has-text-contained
                     = comment.text
-                  a.button.is-small.is-black(href='/campgrounds/' + campground._id + '/comments/' + comment._id + '/edit') Edit
+                  a.button.is-small.edit-button(href='/campgrounds/'+campground._id+'/comments/'+comment._id+'/edit') Edit
+                  form#delete-comment(action='/campgrounds/'+campground._id+'/comments/'+comment._id+'?_method=DELETE' method='post')
+                    button.button.is-small.is-danger Delete
                   
