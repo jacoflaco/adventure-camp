@@ -1,0 +1,64 @@
+#landing-content
+  z-index: 1
+  position: relative
+
+#landing-title > span
+  display: inline-block
+  padding: 5px 15px 13px
+  background-color: white
+  color: black
+
+#landing-subtitle > span
+  display: inline-block
+  padding: 3px 15px 9px
+  background-color: white
+  color: black
+
+.slideshow 
+  position: fixed
+  width: 100%
+  height: 100%
+  top: 0
+  left: 0
+  z-index: 0
+  list-style: none
+  margin: 0
+  padding: 0
+  > li
+    width: 100%
+    height: 100%
+    position: absolute
+    top: 0
+    left: 0
+    background-size: cover
+    background-position: 50% 50%
+    background-repeat: no-repeat
+    opacity: 0
+    z-index: 0
+    animation: imageAnimation 50s linear infinite
+    &:nth-child(1)
+      background-image: url(https://source.unsplash.com/1600x900/?nature,water)
+    &:nth-child(2)
+      background-image: url(https://source.unsplash.com/1600x900/?trees,camping)
+      animation-delay: 10s
+    &:nth-child(3)
+      background-image: url(https://source.unsplash.com/1600x900/?camping,wilderness)
+      animation-delay: 20s
+    &:nth-child(4)
+      background-image: url(https://source.unsplash.com/1600x900/?outdoors,camping)
+      animation-delay: 30s
+    &:nth-child(5)
+      background-image: url(https://source.unsplash.com/1600x900/?winter,forest)
+      animation-delay: 40s
+
+@keyframes imageAnimation
+  0%
+    opacity: 0
+    animation-timing-function: ease-in
+  10%
+    opacity: 1
+    animation-timing-function: ease-out
+  20%
+    opacity: 1
+  30%
+    opacity: 0
