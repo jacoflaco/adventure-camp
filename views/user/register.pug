@@ -10,6 +10,8 @@ body
           #form-box.column.is-4.box
             form(action='/register' method='post')
               .columns.is-centered
+                include ../partials/message
+              .columns.is-centered
                 .column
                   h1#form-title.title.is-4
                     span Sign up

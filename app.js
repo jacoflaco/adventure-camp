@@ -5,7 +5,8 @@ let express = require('express'),
     passport = require('passport'),
     passportLocal = require('passport-local'),
     passportLocalMongoose = require('passport-local-mongoose'),
-    methodOverride = require('method-override')
+    methodOverride = require('method-override'),
+    flash = require('connect-flash')
 
 // models
 let Comment = require('./models/comment'),
@@ -26,6 +27,7 @@ mongoose.connect('mongodb://localhost/adventure')
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(express.static(__dirname + '/assets'))
 app.use(methodOverride('_method'))
+app.use(flash())
 
 // pug setup
 app.set('view engine', 'pug')
@@ -45,6 +47,8 @@ passport.deserializeUser(User.deserializeUser())
 // necessary after passport setup to send user data to each page
 app.use((req, res, next) => {
   res.locals.currentUser = req.user
+  res.locals.danger = req.flash('danger')
+  res.locals.success = req.flash('success')
   next()
 })
 

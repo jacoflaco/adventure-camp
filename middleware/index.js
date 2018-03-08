@@ -8,6 +8,7 @@ middle.isLoggedIn = (req, res, next) => {
   if (req.isAuthenticated()) {
     return next()
   }
+  req.flash('danger', 'You must be logged in to do that')
   res.redirect('/login')
 }
 
@@ -17,6 +18,7 @@ middle.checkCampgroundOwnership = (req, res, next) => {
     // does the user own the campground?
     Campground.findById(req.params.id, (err, campground) => {
       if (err) {
+        req.flash('danger', 'Campground not found')        
         res.redirect('back')
       }
       else {
@@ -25,6 +27,7 @@ middle.checkCampgroundOwnership = (req, res, next) => {
           next()
         }
         else {
+          req.flash('danger', 'You don\'t have permission to do that')          
           res.redirect('back')
         }
       }
@@ -32,6 +35,7 @@ middle.checkCampgroundOwnership = (req, res, next) => {
   }
   else {
     // otherwise, redirect
+    req.flash('danger', 'You must be logged in to do that')
     res.redirect('back')
   } 
 }
@@ -50,6 +54,7 @@ middle.checkCommentOwnership = (req, res, next) => {
           next()
         }
         else {
+          req.flash('danger', 'You don\'t have permission to do that')                
           res.redirect('back')
         }
       }
@@ -57,6 +62,7 @@ middle.checkCommentOwnership = (req, res, next) => {
   }
   else {
     // otherwise, redirect
+    req.flash('danger', 'You must be logged in to do that')          
     res.redirect('back')
   } 
 }

@@ -10,6 +10,8 @@ body
           #form-box.column.is-5.box
             form(action='/campgrounds' method='post')
               .columns.is-centered
+                include ../partials/message
+              .columns.is-centered
                 .column
                   h1#form-title.title.is-4
                     span Create New Campground

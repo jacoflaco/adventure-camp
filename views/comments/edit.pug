@@ -10,6 +10,8 @@ body
           #form-box.column.is-5.box
             form(action='/campgrounds/'+campground._id+'/comments/'+comment._id+'?_method=PUT' method='post')
               .columns.is-centered
+                include ../partials/message
+              .columns.is-centered
                 .column
                   h1#form-title.title.is-4
                     span Edit comment

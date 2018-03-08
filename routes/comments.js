@@ -30,6 +30,7 @@ router.post('/', middle.isLoggedIn, (req, res) => {
       let newcomment = req.body.comment
       Comment.create(newcomment, (err, comment) => {
         if (err) {
+          req.flash('danger', 'Something went wrong')                
           console.log(err)
         }
         else {
@@ -43,6 +44,7 @@ router.post('/', middle.isLoggedIn, (req, res) => {
           campground.save()
 
           // Redirect to show page
+          req.flash('success', 'Successfully created comment')                
           res.redirect('/campgrounds/' + campground._id)
         }
       })
@@ -89,6 +91,7 @@ router.delete('/:comment_id', middle.checkCommentOwnership, (req, res) => {
       res.redirect('back')
     }
     else {
+      req.flash('success', 'Comment deleted')            
       res.redirect('/campgrounds/' + req.params.id)
     }
   })
